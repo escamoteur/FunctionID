@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>FunctionId.Logic</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jose-jwt" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SharedInterfaces\SharedInterfaces.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.WebJobs.Host">
+      <HintPath>..\..\..\..\Users\escam\.nuget\packages\microsoft.azure.webjobs\3.0.0-beta5\lib\netstandard2.0\Microsoft.Azure.WebJobs.Host.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

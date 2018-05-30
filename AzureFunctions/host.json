@@ -1,0 +1,9 @@
+{
+	"Values": {
+		"SendGridApiKey": "API_KEY",
+		"IgnoreUserActiveCheck": true,
+		"IgnoreSubscriptionValidCheck" : true,
+		"JwtKey": "/v7tptFmljkzDs5O6JwarTbkk12HeQWGCL/mOiq8CA==",
+		"DebugMode": true
+	}
+}
