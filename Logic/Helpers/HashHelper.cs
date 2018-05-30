@@ -43,8 +43,10 @@ namespace FunctionId.Logic.Helpers
 
         private static byte[] GenerateSalt(int saltSize)
         {
-            var randomKeyGenerator = new RandomKeyGenerator();
-            return randomKeyGenerator.GetBytes(saltSize);
+            var rng = new RNGCryptoServiceProvider();
+            var buff = new byte[saltSize];
+            rng.GetBytes(buff);
+            return buff;
         }
 
         private static byte[] AppendByteArray(byte[] byteArray1, byte[] byteArray2)

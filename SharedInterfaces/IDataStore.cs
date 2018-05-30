@@ -7,5 +7,8 @@
         IUserInDb GetUserByEmail(string email);
         IUserInDb GetUserByUserName(string userName);
         void UpdateUser(IUserInDb userInDb);
+        IUserInDb GetUserByToken(string refreshToken);
+        IUserInDb GetUserByActivationToken(string activationToken);
+        void DeleteUser(string userName);
     }
 }

@@ -9,5 +9,8 @@ namespace FunctionId.SharedInterfaces
         string RequestsPasswordResetToken { get; set; }
         string LastActivationToken { get; set; }
         string RefreshToken { get; set; }
+        bool IsExpired { get; }
     }
+
+    
 }

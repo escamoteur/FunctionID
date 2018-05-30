@@ -5,4 +5,8 @@
     <RootNamespace>FunctionId.AzureServices</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SharedInterfaces\SharedInterfaces.csproj" />
+  </ItemGroup>
+
 </Project>

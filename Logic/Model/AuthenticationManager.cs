@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using FunctionId.Logic.Helpers;
 using FunctionId.Logic.Model;
 using FunctionId.Shared;
+using FunctionId.SharedInterfaces;
 using Jose;
 using Microsoft.Azure.WebJobs.Host;
 
@@ -16,9 +17,9 @@ namespace FunctionId.Logic.Model
     {
         private readonly IDataStore dataStore;
         private readonly TraceWriter log;
-        private readonly AppSettings settings;
+        private readonly IAppSettings settings;
 
-        AuthenticationManager(IDataStore dataStore, TraceWriter logger, AppSettings settings)
+        public AuthenticationManager(IDataStore dataStore, TraceWriter logger, IAppSettings settings)
         {
             this.dataStore = dataStore;
             this.log = logger;
@@ -55,7 +56,7 @@ namespace FunctionId.Logic.Model
         public AuthenticationStatus LoginUser(string userName, string email, string pwd)
         {
 
-            UserDataInDb userInDb = email != null ? dataStore.GetUserByEmail(email) : null;
+            var userInDb = email != null ? dataStore.GetUserByEmail(email) : null;
             if (userInDb == null)
             {
                 userInDb = dataStore.GetUserByUserName(userName);
@@ -86,7 +87,7 @@ namespace FunctionId.Logic.Model
             return CompleteAuthenticationStatus(userInDb, authenticationStatus);
         }
 
-        private AuthenticationStatus CompleteAuthenticationStatus(UserDataInDb userInDb, AuthenticationStatus authenticationStatus)
+        private AuthenticationStatus CompleteAuthenticationStatus(IUserInDb userInDb, AuthenticationStatus authenticationStatus)
         {
             // We return an refresh token even if the user is not activated or the subscription has expired.
             // In this cases we will not return a new access token (JWT token)
@@ -162,7 +163,7 @@ namespace FunctionId.Logic.Model
         public bool ActivateUser(string activationToken)
         {
  
-            UserDataInDb userInDB = dataStore.GetUserByActivationToken(activationToken);
+            var userInDB = dataStore.GetUserByActivationToken(activationToken);
 
             if (userInDB == null)
             {
