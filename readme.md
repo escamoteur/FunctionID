@@ -25,6 +25,7 @@ Feature accessible over an REST API:
 * Accessing custom user data. 
 * Login via refresh token
 * Sending password reset emails
+* Optional integration of [https://haveibeenpwned.com/API/v2](https://haveibeenpwned.com/API/v2)
 
 
 ## Client SDKs
